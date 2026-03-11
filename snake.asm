@@ -1,7 +1,8 @@
 .data
 newline: .asciz "\n"
-.text
 
+
+.text
 .globl main
 
 
@@ -17,10 +18,13 @@ li s4, 2 # direction N 0  W 1  S 2  E 3
 li s5, 0xFFFF0004
 
 li t0, 0xFFFFFF 
-
-
+li s6, 0x000000
 
 draw_loop:
+beq t3, s6, draw_pass
+sw s6, 0(t3)
+
+draw_pass:
 slli t1, s1, 6 # y offset
 slli t2, s0, 2 # x offset    
 
